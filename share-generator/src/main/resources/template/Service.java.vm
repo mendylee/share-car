@@ -1,0 +1,19 @@
+package ${package}.${moduleName}.service;
+
+import ${package}.${moduleName}.entity.${className};
+import com.jinzhun.common.model.PageResult;
+import com.jinzhun.common.model.Result;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Map;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface I${className}Service extends IService<${className}> {
+
+    PageResult<${className}> findList(Map<String, Object> params);
+}
