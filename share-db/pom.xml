@@ -13,20 +13,13 @@
 	<artifactId>share-db</artifactId>
 	<description>数据库通用组件</description>
 	<dependencies>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>${mybatis-plus.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-extension</artifactId>
-			<version>${mybatis-plus.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>${druid-starter.version}</version>
 		</dependency>
 	</dependencies>
 </project>

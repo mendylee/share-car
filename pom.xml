@@ -9,40 +9,227 @@
 	<name>share-car</name>
 
 	<properties>
-		<java.version>8</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
-		<apollo.version>1.0.0</apollo.version>
-		<collections4.version>4.2</collections4.version>
+		<java.version>8</java.version>
+		<commons-io.version>2.6</commons-io.version>
+		<commons-collections4.version>4.2</commons-collections4.version>
+		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<fastjson.version>1.2.54</fastjson.version>
-		<hutool.version>4.3.1</hutool.version>
-		<druid-starter.version>1.1.10</druid-starter.version>
-		<mybatis-plus.version>3.0.6</mybatis-plus.version>
-		<velocity.version>1.7</velocity.version>
-		<commons-configuration.version>1.10</commons-configuration.version>
 		<swagger.version>2.9.2</swagger.version>
 		<swagger.ui.version>1.8.7</swagger.ui.version>
 		<swagger.mg.ui.version>1.0.6</swagger.mg.ui.version>
 		<swagger.butler.version>1.2.0</swagger.butler.version>
+		<jjwt.version>0.9.1</jjwt.version>
+		<druid-starter.version>1.1.10</druid-starter.version>
+		<security-oauth2.version>2.3.5.RELEASE</security-oauth2.version>
+		<hutool.version>4.3.1</hutool.version>
+		<velocity.version>1.7</velocity.version>
+		<apollo.version>1.0.0</apollo.version>
+		<fastjson.version>1.2.54</fastjson.version>
+		<mybatis-plus.version>3.0.6</mybatis-plus.version>
+		<commons-configuration.version>1.10</commons-configuration.version>
+		<mybatis-plus-boot-starter.version>3.0.6</mybatis-plus-boot-starter.version>
+		<social-security.version>1.1.6.RELEASE</social-security.version>
+		<security-jwt.version>1.0.9.RELEASE</security-jwt.version>
+		<spring-boot-dependencies.version>2.1.0.RELEASE</spring-boot-dependencies.version>
+		<spring-cloud-dependencies.version>Finchley.SR1</spring-cloud-dependencies.version>
 	</properties>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.0.RELEASE</version>
-	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons-collections4.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- 自定义 -->
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<groupId>com.jinzhun</groupId>
+				<artifactId>share-commons</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.jinzhun</groupId>
+				<artifactId>share-db</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.jinzhun</groupId>
+				<artifactId>share-log</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.jinzhun</groupId>
+				<artifactId>share-redis</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.jinzhun</groupId>
+				<artifactId>share-swagger2</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.jinzhun</groupId>
+				<artifactId>share-auth</artifactId>
+			</dependency>
+
+			<!-- for jsonwebtoken -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jjwt.version}</version>
+			</dependency>
+
+			<!-- for druid -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid-starter.version}</version>
+			</dependency>
+			<!-- mybatis-plus start -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-extension</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+
+			<!-- 加入spring security spring security oauth2的处理 -->
+			<dependency>
+				<groupId>org.springframework.security.oauth</groupId>
+				<artifactId>spring-security-oauth2</artifactId>
+				<version>${security-oauth2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-jwt</artifactId>
+				<version>${security-jwt.version}</version>
+			</dependency>
+
+			<!-- 在Redis基础上的一个Java实用工具包 -->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+
+			<!-- spring-boot-dependencies -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot-dependencies.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!-- swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-bean-validators</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.xiaoymin</groupId>
+				<artifactId>swagger-bootstrap-ui</artifactId>
+				<version>${swagger.ui.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.zyplayer</groupId>
+				<artifactId>swagger-mg-ui</artifactId>
+				<version>${swagger.mg.ui.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.didispace</groupId>
+				<artifactId>swagger-butler-core</artifactId>
+				<version>${swagger.butler.version}</version>
+			</dependency>
+
+			<!-- hutool java工具类库 -->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
+
+			<!-- mybatis-plus -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+
+			<!-- spring-boot-admin -->
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-server</artifactId>
+				<version>${spring-boot-admin.version}</version>
+			</dependency>
+
+			<!-- velocity -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-configuration</groupId>
+				<artifactId>commons-configuration</artifactId>
+				<version>${commons-configuration.version}</version>
+			</dependency>
+
+			<!-- spring-cloud-dependencies -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- apollo -->
 			<dependency>
 				<groupId>com.ctrip.framework.apollo</groupId>
 				<artifactId>apollo-client</artifactId>
@@ -56,137 +243,15 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-
-		<!-- swagger -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-bean-validators</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>swagger-bootstrap-ui</artifactId>
-			<version>${swagger.ui.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.zyplayer</groupId>
-			<artifactId>swagger-mg-ui</artifactId>
-			<version>${swagger.mg.ui.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.didispace</groupId>
-			<artifactId>swagger-butler-core</artifactId>
-			<version>${swagger.butler.version}</version>
-		</dependency>
-
-		<!-- Redis -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>redis.clients</groupId>
-					<artifactId>jedis</artifactId>
-				</exclusion>
-				<exclusion>
-					<artifactId>lettuce-core</artifactId>
-					<groupId>io.lettuce</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- jedis客户端 -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-		</dependency>
-
-		<!-- Apollo配置中心 -->
-		<dependency>
-			<groupId>com.ctrip.framework.apollo</groupId>
-			<artifactId>apollo-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-			<version>${collections4.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
-		</dependency>
-		<!-- hutool java工具类库 -->
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-			<version>${hutool.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>${velocity.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-configuration</groupId>
-			<artifactId>commons-configuration</artifactId>
-			<version>${commons-configuration.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-prometheus</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-	</dependencies>
-
 	<modules>
 		<module>share-commons</module>
 		<module>share-generator</module>
 		<module>share-redis</module>
+		<module>share-ribbon</module>
 		<module>share-log</module>
 		<module>share-db</module>
 		<module>share-swagger2</module>
-		<module>share-business</module>
+		<module>share-auth</module>
+		<module>share-uaa</module>
 	</modules>
 </project>

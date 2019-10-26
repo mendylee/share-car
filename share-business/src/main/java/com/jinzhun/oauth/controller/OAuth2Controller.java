@@ -38,7 +38,7 @@ import com.jinzhun.common.utils.SpringUtil;
 import com.jinzhun.oauth.config.WechatConfiguration;
 import com.jinzhun.oauth.mobile.MobileAuthenticationToken;
 import com.jinzhun.oauth.openid.OpenIdAuthenticationToken;
-import com.jinzhun.oauth.service.RedisClientDetailsService;
+import com.jinzhun.oauth.service.impl.RedisClientDetailsService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -12,6 +12,7 @@
 	<packaging>jar</packaging>
 	<artifactId>share-log</artifactId>
 	<description>日志通用组件</description>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>
